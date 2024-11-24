@@ -1,0 +1,31 @@
+@startuml
+
+[*] --> Off
+
+state Off {
+    [*] --> OffLowSpeed
+    OffLowSpeed --> On : ON
+    OffLowSpeed --> Off : OFF
+}
+
+state On {
+    [*] --> LowSpeed
+    LowSpeed --> MediumSpeed : switch to medium
+    MediumSpeed --> HighSpeed : switch to high
+    HighSpeed --> LowSpeed : switch to low
+    HighSpeed --> Off : OFF
+    MediumSpeed --> Off : OFF
+    LowSpeed --> Off : OFF
+}
+
+Off --> On : ON
+
+state MediumSpeed {
+    [*] --> MediumSpeed
+}
+
+state HighSpeed {
+    [*] --> HighSpeed
+}
+
+@enduml
